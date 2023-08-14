@@ -1,0 +1,32 @@
+{
+  "version": 2,
+  "builds": [
+    {
+      "use": "@vercel/php"
+    }
+  ],
+  "functions": {
+    "api/**/*.php": {
+      "runtime": "@vercel/php"
+    }
+  },
+  "routes": [
+    {
+      "src": "/(.*)",
+      "dest": "/index.php"
+    }
+  ],
+  "env": {
+    "APP_KEY": "@your-app-key",
+    "APP_ENV": "production"
+  },
+  "install": {
+    "include": [
+      "vendor/**/*"
+    ],
+    "command": "composer install --no-dev"
+  },
+  "build": {
+    "use": "@vercel/static"
+  }
+}
